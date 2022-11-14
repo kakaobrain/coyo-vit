@@ -1,0 +1,23 @@
+
+train:
+  cache: false
+  supervised_key: 'labels'
+  builder:
+    - tfds_name: null
+      tfds_data_dir: {your dir}
+      tfds_split: 'train'
+
+validation:
+  cache: false
+  supervised_key: 'labels'
+  builder:
+    - tfds_name: null
+      tfds_data_dir: {your dir}
+      tfds_split: 'validation[:50000]'  # We performed validation as part of the Imagenet21k dataset. 
+                                        # All you can validate using subset of COYO-Labels-300M 
+                                        # train:
+                                        # builder:
+                                        #   - tfds_split: train[:-50000]
+                                        # validation:
+                                        # builder:
+                                        #   - tfds_split: train[-50000:]

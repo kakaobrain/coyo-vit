@@ -1,0 +1,71 @@
+defaults:
+  - /dataset: coyo300m
+  - /backbone: vit_l16
+  - /loss: binary_crossentropy
+  - /learning_rate: vit_linear
+  - /optimizer: adamw
+  - /metrics: multi_label_classification
+
+global_batch_size: 4096
+local_batch_size: null
+
+epochs: 7
+steps: null
+
+backbone:
+  backbone_params:
+    dropout_rate: 0.
+    representation_size: 1024
+    channels: 3
+  dropout_rate: 0. # this is a param for classification head=
+  cls_bias_init:
+    type: 'constant'
+    params:
+      value: -10.
+
+loss:
+  l2_weight_decay: 0.
+  config:
+    label_smoothing: 0.
+
+learning_rate:
+  base_lr: 6e-4
+  end_learning_rate: 1e-5
+  warmup_steps: 10000
+
+optimizer:
+  config:
+    weight_decay_rate: 0.1
+    global_clipnorm: 1.0
+
+dataset:
+  train:
+    dtype: 'bfloat16'
+    image_size: 224
+    mixup_alpha: 0.0
+    cutmix_alpha: 0.0
+    preprocess:
+      - type: InceptionCrop
+        params:
+          size: 224
+      - type: random_hflip
+      - type: normalize
+        params:
+          mean: 127.5
+          std: 127.5
+  validation:
+    dtype: 'bfloat16'
+    image_size: 224
+    mixup_alpha: 0.0
+    cutmix_alpha: 0.0
+    preprocess:
+      - type: ResizeSmall
+        params:
+          size: 256
+      - type: CentralCrop
+        params:
+          size: 224
+      - type: normalize
+        params:
+          mean: 127.5
+          std: 127.5

@@ -1,0 +1,66 @@
+defaults:
+  - /dataset: imagenet1k
+  - /backbone: vit_l16
+  - /progressive: null
+  - /loss: categorical_crossentropy
+  - /learning_rate: vit_cosine
+  - /optimizer: sgd
+  - /metrics: single_label_classification
+
+global_batch_size: 512
+local_batch_size: null
+
+epochs: 8
+
+backbone:
+  backbone_params:
+    image_size: 384
+    dropout_rate: 0.
+    representation_size: 0
+    channels: 3
+  dropout_rate: 0. # this is a param for classification head=
+  pretrained: null
+  cls_bias_init:
+    type: 'zeros'
+
+loss:
+  l2_weight_decay: 0.
+  config:
+    label_smoothing: 0.
+
+learning_rate:
+  base_lr: 6e-2 # sweep in [0.01, 0.03, 0.06]
+  warmup_steps: 500
+
+optimizer:
+  config:
+    global_clipnorm: 1.0
+
+dataset:
+  train:
+    dtype: 'bfloat16'
+    image_size: 384
+    mixup_alpha: 0.0
+    cutmix_alpha: 0.0
+    preprocess:
+      - type: InceptionCrop
+        params:
+          size: 384
+      - type: random_hflip
+      - type: normalize
+        params:
+          mean: 127.5
+          std: 127.5
+  validation:
+    dtype: 'bfloat16'
+    image_size: 384
+    mixup_alpha: 0.0
+    cutmix_alpha: 0.0
+    preprocess:
+      - type: resize
+        params:
+          size: [ 384, 384 ]
+      - type: normalize
+        params:
+          mean: 127.5
+          std: 127.5

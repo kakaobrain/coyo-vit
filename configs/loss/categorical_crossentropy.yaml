@@ -1,0 +1,5 @@
+class_name: 'CategoricalCrossentropy'
+config:
+  from_logits: true
+  label_smoothing: 0.1
+l2_weight_decay: 0.00001

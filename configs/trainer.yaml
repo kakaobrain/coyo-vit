@@ -1,0 +1,26 @@
+hydra:
+  run:
+    dir: ./outputs/${now:%Y-%m-%d}/${now:%H-%M-%S}
+
+
+defaults:
+  - trainer: vit_b16_i1k
+  - override hydra/job_logging: colorlog
+  - override hydra/hydra_logging: colorlog
+
+
+runtime:
+  strategy: 'tpu' # one of ['cpu', 'tpu', 'gpu', 'gpu_multinode', 'gpu_multinode_async']
+  use_mixed_precision: true
+  tpu:
+    version: 2.8.0
+    name: ???
+    zone: 'europe-west4-a'
+    type: 'v3-32'
+
+
+experiment:
+  mode: train_eval  # 'train', 'train_eval', 'eval'
+  debug: false
+  save_dir: ${hydra:run.dir}
+  comment: ???

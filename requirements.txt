@@ -1,0 +1,7 @@
+scipy
+tensorflow==2.8.0
+tensorflow-probability
+tensorflow-datasets==4.5.0
+tensorflow-addons
+hydra-colorlog
+hydra-core

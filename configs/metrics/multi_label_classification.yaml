@@ -1,0 +1,36 @@
+metrics_list:
+  - class_name: 'TopKPrecision'
+    config:
+      k: 1
+      name: 'top1_prec'
+  - class_name: 'TopKCategoricalAccuracy'
+    config:
+      k: 1
+      name: 'top1_acc'
+  - class_name: 'TopKCategoricalAccuracy'
+    config:
+      k: 5
+      name: 'top5_acc'
+  - class_name: 'AUC'
+    config:
+      multi_label: true
+      from_logits: true
+      name: 'auc'
+  - class_name: 'BinaryAccuracy'
+    config:
+      threshold: 0. # if from_logits is True: [-inf, inf], else: [0, 1]
+      name: 'acc'
+  - class_name: 'BinaryCrossentropy'
+    config:
+      from_logits: true
+      name: 'bce'
+  - class_name: 'F1Score'
+    config:
+      name: 'macro_f1_score'
+      average: 'macro'
+      threshold: 0. # if from_logits is True: 0, else: 0.5
+  - class_name: 'F1Score'
+    config:
+      name: 'micro_f1_score'
+      average: 'micro'
+      threshold: 0. # if from_logits is True: [-inf, inf], else: [0, 1]

@@ -1,0 +1,6 @@
+schedule_name: 'vit/cosine'
+
+init_lr: 0.
+base_lr: 3e-3
+end_learning_rate: 0
+warmup_steps: 10000

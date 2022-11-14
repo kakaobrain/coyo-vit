@@ -1,0 +1,4 @@
+class_name: 'SGD'
+config:
+  momentum: 0.9
+moving_average_decay: 0.

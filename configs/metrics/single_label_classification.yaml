@@ -1,0 +1,10 @@
+metrics_list:
+  - class_name: 'TopKCategoricalAccuracy'
+    config:
+      k: 1
+      name: 'top1_acc'
+  - class_name: 'TopKCategoricalAccuracy'
+    config:
+      k: 5
+      name: 'top5_acc'
+  - class_name: 'CategoricalAccuracy'

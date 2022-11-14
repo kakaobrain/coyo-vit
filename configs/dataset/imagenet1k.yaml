@@ -1,0 +1,16 @@
+
+train:
+  cache: true
+  supervised_key: 'label'
+  builder:
+    - tfds_name: 'imagenet2012:5.0.0'
+      tfds_data_dir: {your dir}
+      tfds_split: 'train'
+
+validation:
+  cache: true
+  supervised_key: 'label'
+  builder:
+    - tfds_name: 'imagenet2012:5.0.0'
+      tfds_data_dir: {your dir}
+      tfds_split: 'validation'

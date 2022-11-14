@@ -1,0 +1,13 @@
+backbone_name: 'vit-b/16'
+backbone_params:
+  image_size: 224
+  representation_size: 768
+  attention_dropout_rate: 0.
+  dropout_rate: 0.1 # 0 in official code. 0.1 in timm library.
+  channels: 3
+dropout_rate: 0. # this is a param for classification head
+cls_kernel_init:
+  type: 'zeros'
+cls_bias_init:
+  type: 'zeros'
+pretrained: null
