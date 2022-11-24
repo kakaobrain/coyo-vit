@@ -4,7 +4,7 @@ This repository attempted to reproduce the ViT from the COYO-Labeled-300M datase
 
 - [An Image is Worth 16x16 Words: Transformers for Image Recognition at Scale](https://arxiv.org/abs/2010.11929)
 - [COYO-700M: Image-Text Pair Dataset](https://github.com/kakaobrain/coyo-dataset)
-- [COYO-Labeled-300M: Image-labeled Dataset](https://github.com/kakaobrain/coyo-dataset/subset/coyo-labeled-300m)
+- [COYO-Labeled-300M: Image-labeled Dataset](https://github.com/kakaobrain/coyo-dataset/tree/main/subset/COYO-Labeled-300M)
 
 The model was pre-trained on the labeled COYO-Labeled-300M dataset, which is the largest number of published
 classification ViT.
